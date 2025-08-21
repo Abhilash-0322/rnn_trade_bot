@@ -53,6 +53,10 @@ python run.py
 - **Trading Bot**: `http://localhost:5000/`
 - **Portfolio**: `http://localhost:5000/portfolio`
 
+
+## Overview
+![RNN Crypto Trading Bot Overview](rnn_oveview.svg)
+
 ## 📋 API Endpoints
 
 ### Trading

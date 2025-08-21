@@ -1,0 +1,306 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2021pt" height="572pt" viewBox="0.00 0.00 2021.30 572.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 568)">
+<title>RnnCrypto</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-568 2017.3,-568 2017.3,4 -4,4"/>
+<g id="clust1" class="cluster">
+<title>cluster_flask</title>
+<polygon fill="none" stroke="black" points="98.78,-273 98.78,-556 2005.3,-556 2005.3,-273 98.78,-273"/>
+<text text-anchor="middle" x="1052.04" y="-539.4" font-family="Times,serif" font-size="14.00">Flask App</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_storage</title>
+<polygon fill="none" stroke="black" points="1362.99,-122 1362.99,-265 1577.72,-265 1577.72,-122 1362.99,-122"/>
+<text text-anchor="middle" x="1470.35" y="-248.4" font-family="Times,serif" font-size="14.00">Storage</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_frontend</title>
+<polygon fill="none" stroke="black" points="8,-8 8,-265 309.83,-265 309.83,-8 8,-8"/>
+<text text-anchor="middle" x="158.91" y="-248.4" font-family="Times,serif" font-size="14.00">Frontend (static)</text>
+</g>
+<!-- create_app() -->
+<g id="node1" class="node">
+<title>create_app()</title>
+<polygon fill="none" stroke="black" points="211.05,-450.8 106.78,-450.8 106.78,-409.2 211.05,-409.2 211.05,-450.8"/>
+<text text-anchor="middle" x="158.91" y="-434.2" font-family="Times,serif" font-size="14.00">app/__init__.py</text>
+<text text-anchor="middle" x="158.91" y="-417.4" font-family="Times,serif" font-size="14.00">create_app()</text>
+</g>
+<!-- AuthManager -->
+<g id="node2" class="node">
+<title>AuthManager</title>
+<polygon fill="none" stroke="black" points="946.67,-331.8 769.58,-331.8 769.58,-290.2 946.67,-290.2 946.67,-331.8"/>
+<text text-anchor="middle" x="858.13" y="-315.2" font-family="Times,serif" font-size="14.00">auth/auth_manager.py</text>
+<text text-anchor="middle" x="858.13" y="-298.4" font-family="Times,serif" font-size="14.00">AuthManager + Flask-Login</text>
+</g>
+<!-- create_app()&#45;&gt;AuthManager -->
+<g id="edge1" class="edge">
+<title>create_app()-&gt;AuthManager</title>
+<path fill="none" stroke="black" d="M211.33,-420.81C242.64,-415.33 283.49,-408.42 319.83,-403 367.67,-395.86 705.96,-363.08 751.58,-347 758.29,-344.64 760.24,-341.7 768.6,-337.1"/>
+<polygon fill="black" stroke="black" points="770.07,-340.28 777.57,-332.81 767.04,-333.97 770.07,-340.28"/>
+</g>
+<!-- MongoDB -->
+<g id="node3" class="node">
+<title>MongoDB</title>
+<polygon fill="none" stroke="black" points="1997.3,-386.2 1798.57,-386.2 1798.57,-327.8 1997.3,-327.8 1997.3,-386.2"/>
+<text text-anchor="middle" x="1897.93" y="-369.6" font-family="Times,serif" font-size="14.00">database/mongodb.py</text>
+<text text-anchor="middle" x="1897.93" y="-352.8" font-family="Times,serif" font-size="14.00">MongoDB client + collections</text>
+<text text-anchor="middle" x="1897.93" y="-336" font-family="Times,serif" font-size="14.00">users, trades, bot_configs, prices</text>
+</g>
+<!-- create_app()&#45;&gt;MongoDB -->
+<g id="edge2" class="edge">
+<title>create_app()-&gt;MongoDB</title>
+<path fill="none" stroke="black" d="M211.3,-430.45C316.22,-431.35 562.65,-433.32 769.58,-434 808.94,-434.13 911.11,-450.85 946.67,-434 958.09,-428.59 953.73,-418.32 964.67,-412 1033.95,-372.02 1062.68,-390.84 1142.28,-383 1204.48,-376.88 1592.78,-365.45 1786.82,-360.02"/>
+<polygon fill="black" stroke="black" points="1786.77,-363.52 1796.67,-359.74 1786.58,-356.52 1786.77,-363.52"/>
+</g>
+<!-- BinanceClient -->
+<g id="node4" class="node">
+<title>BinanceClient</title>
+<polygon fill="none" stroke="black" points="1956.48,-463.2 1839.38,-463.2 1839.38,-404.8 1956.48,-404.8 1956.48,-463.2"/>
+<text text-anchor="middle" x="1897.93" y="-446.6" font-family="Times,serif" font-size="14.00">binance_client.py</text>
+<text text-anchor="middle" x="1897.93" y="-429.8" font-family="Times,serif" font-size="14.00">Spot API wrapper</text>
+<text text-anchor="middle" x="1897.93" y="-413" font-family="Times,serif" font-size="14.00">dry_run support</text>
+</g>
+<!-- create_app()&#45;&gt;BinanceClient -->
+<g id="edge3" class="edge">
+<title>create_app()-&gt;BinanceClient</title>
+<path fill="none" stroke="black" d="M211.22,-439.78C242.49,-445.39 283.33,-452.07 319.83,-456 776.78,-505.23 894.14,-526.3 1352.99,-500 1457.83,-493.99 1483.14,-482.53 1587.72,-473 1673.27,-465.2 1695.55,-472.29 1780.57,-460 1795.98,-457.77 1812.39,-454.61 1827.87,-451.25"/>
+<polygon fill="black" stroke="black" points="1828.47,-454.7 1837.47,-449.11 1826.95,-447.87 1828.47,-454.7"/>
+</g>
+<!-- TradingBotManager -->
+<g id="node5" class="node">
+<title>TradingBotManager</title>
+<polygon fill="none" stroke="black" points="1117.99,-462.8 970.97,-462.8 970.97,-421.2 1117.99,-421.2 1117.99,-462.8"/>
+<text text-anchor="middle" x="1044.48" y="-446.2" font-family="Times,serif" font-size="14.00">services/trading_bot.py</text>
+<text text-anchor="middle" x="1044.48" y="-429.4" font-family="Times,serif" font-size="14.00">Threaded bot manager</text>
+</g>
+<!-- create_app()&#45;&gt;TradingBotManager -->
+<g id="edge4" class="edge">
+<title>create_app()-&gt;TradingBotManager</title>
+<path fill="none" stroke="black" d="M211.3,-436.86C242.6,-440.69 283.44,-445.07 319.83,-447 598.04,-461.75 668.17,-454.19 946.67,-447 950.78,-446.89 954.99,-446.76 959.24,-446.61"/>
+<polygon fill="black" stroke="black" points="959.18,-450.12 969.04,-446.23 958.91,-443.12 959.18,-450.12"/>
+</g>
+<!-- PortfolioManager -->
+<g id="node6" class="node">
+<title>PortfolioManager</title>
+<polygon fill="none" stroke="black" points="1983.11,-522.8 1812.75,-522.8 1812.75,-481.2 1983.11,-481.2 1983.11,-522.8"/>
+<text text-anchor="middle" x="1897.93" y="-506.2" font-family="Times,serif" font-size="14.00">services/portfolio.py</text>
+<text text-anchor="middle" x="1897.93" y="-489.4" font-family="Times,serif" font-size="14.00">In-memory positions/trades</text>
+</g>
+<!-- create_app()&#45;&gt;PortfolioManager -->
+<g id="edge5" class="edge">
+<title>create_app()-&gt;PortfolioManager</title>
+<path fill="none" stroke="black" d="M211.31,-446.49C242.44,-455.97 283.1,-467.45 319.83,-475 476.44,-507.18 516.6,-522 676.48,-522 676.48,-522 676.48,-522 1471.35,-522 1608.84,-522 1643.34,-521.47 1780.57,-513 1787.26,-512.59 1794.17,-512.1 1801.13,-511.56"/>
+<polygon fill="black" stroke="black" points="1801.26,-515.06 1810.94,-510.76 1800.69,-508.08 1801.26,-515.06"/>
+</g>
+<!-- PriceStorage -->
+<g id="node7" class="node">
+<title>PriceStorage</title>
+<polygon fill="none" stroke="black" points="1124.28,-322.8 964.67,-322.8 964.67,-281.2 1124.28,-281.2 1124.28,-322.8"/>
+<text text-anchor="middle" x="1044.48" y="-306.2" font-family="Times,serif" font-size="14.00">services/price_storage.py</text>
+<text text-anchor="middle" x="1044.48" y="-289.4" font-family="Times,serif" font-size="14.00">CSV + Mongo dual-write</text>
+</g>
+<!-- create_app()&#45;&gt;PriceStorage -->
+<g id="edge6" class="edge">
+<title>create_app()-&gt;PriceStorage</title>
+<path fill="none" stroke="black" d="M206.12,-408.84C237.51,-395.43 280.36,-378.97 319.83,-370 325.7,-368.67 746.72,-335.55 751.58,-332 768.31,-319.78 752.34,-300.48 769.58,-289 830.02,-248.78 915.66,-261.09 975.02,-277.62"/>
+<polygon fill="black" stroke="black" points="973.75,-280.9 984.33,-280.33 975.7,-274.18 973.75,-280.9"/>
+</g>
+<!-- Blueprint: api -->
+<g id="node8" class="node">
+<title>Blueprint: api</title>
+<polygon fill="none" stroke="black" points="735.44,-422.8 619.52,-422.8 619.52,-418.8 615.52,-418.8 615.52,-414.8 619.52,-414.8 619.52,-389.2 615.52,-389.2 615.52,-385.2 619.52,-385.2 619.52,-381.2 735.44,-381.2 735.44,-422.8"/>
+<polyline fill="none" stroke="black" points="619.52,-418.8 623.52,-418.8 623.52,-414.8 619.52,-414.8"/>
+<polyline fill="none" stroke="black" points="619.52,-389.2 623.52,-389.2 623.52,-385.2 619.52,-385.2"/>
+<text text-anchor="middle" x="677.48" y="-406.2" font-family="Times,serif" font-size="14.00">app/api_routes.py</text>
+<text text-anchor="middle" x="677.48" y="-389.4" font-family="Times,serif" font-size="14.00">/api/* endpoints</text>
+</g>
+<!-- create_app()&#45;&gt;Blueprint: api -->
+<g id="edge7" class="edge">
+<title>create_app()-&gt;Blueprint: api</title>
+<path fill="none" stroke="black" d="M211.33,-427.21C304.93,-422.14 503.1,-411.4 608.01,-405.71"/>
+<polygon fill="black" stroke="black" points="608.1,-409.21 617.9,-405.18 607.72,-402.22 608.1,-409.21"/>
+</g>
+<!-- Blueprint: auth -->
+<g id="node9" class="node">
+<title>Blueprint: auth</title>
+<polygon fill="none" stroke="black" points="751.58,-322.8 603.38,-322.8 603.38,-318.8 599.38,-318.8 599.38,-314.8 603.38,-314.8 603.38,-289.2 599.38,-289.2 599.38,-285.2 603.38,-285.2 603.38,-281.2 751.58,-281.2 751.58,-322.8"/>
+<polyline fill="none" stroke="black" points="603.38,-318.8 607.38,-318.8 607.38,-314.8 603.38,-314.8"/>
+<polyline fill="none" stroke="black" points="603.38,-289.2 607.38,-289.2 607.38,-285.2 603.38,-285.2"/>
+<text text-anchor="middle" x="677.48" y="-306.2" font-family="Times,serif" font-size="14.00">app/routes/auth.py</text>
+<text text-anchor="middle" x="677.48" y="-289.4" font-family="Times,serif" font-size="14.00">/login, /register, /logout</text>
+</g>
+<!-- create_app()&#45;&gt;Blueprint: auth -->
+<g id="edge8" class="edge">
+<title>create_app()-&gt;Blueprint: auth</title>
+<path fill="none" stroke="black" d="M187.61,-408.87C218.17,-386.8 269.7,-353.18 319.83,-337 409.47,-308.06 517.82,-301.11 591.41,-300.26"/>
+<polygon fill="black" stroke="black" points="591.42,-303.76 601.4,-300.19 591.37,-296.76 591.42,-303.76"/>
+</g>
+<!-- AuthManager&#45;&gt;MongoDB -->
+<g id="edge24" class="edge">
+<title>AuthManager-&gt;MongoDB</title>
+<path fill="none" stroke="black" d="M947.05,-329.83C952.99,-330.69 958.91,-331.43 964.67,-332 1035.27,-338.95 1057.9,-357 1124.28,-332 1134.24,-328.25 1132.32,-319.95 1142.28,-316.2 1229.92,-283.19 1259.41,-312.7 1352.99,-316.2 1503.57,-321.84 1677.1,-336.23 1786.88,-346.32"/>
+<polygon fill="black" stroke="black" points="1786.51,-349.8 1796.79,-347.23 1787.15,-342.83 1786.51,-349.8"/>
+<text text-anchor="middle" x="1247.63" y="-320.4" font-family="Times,serif" font-size="14.00">load/create users</text>
+</g>
+<!-- TradingBot thread -->
+<g id="node10" class="node">
+<title>TradingBot thread</title>
+<polygon fill="none" stroke="black" points="1565.45,-462.8 1375.25,-462.8 1375.25,-421.2 1565.45,-421.2 1565.45,-462.8"/>
+<text text-anchor="middle" x="1470.35" y="-446.2" font-family="Times,serif" font-size="14.00">services/trading_bot.py</text>
+<text text-anchor="middle" x="1470.35" y="-429.4" font-family="Times,serif" font-size="14.00">loops: get_price → BUY/SELL</text>
+</g>
+<!-- TradingBotManager&#45;&gt;TradingBot thread -->
+<g id="edge9" class="edge">
+<title>TradingBotManager-&gt;TradingBot thread</title>
+<path fill="none" stroke="black" d="M1118.34,-442C1185.91,-442 1287.25,-442 1363.69,-442"/>
+<polygon fill="black" stroke="black" points="1363.27,-445.5 1373.27,-442 1363.27,-438.5 1363.27,-445.5"/>
+<text text-anchor="middle" x="1247.63" y="-446.2" font-family="Times,serif" font-size="14.00">start(symbol, buy, sell, qty)</text>
+</g>
+<!-- CSV files -->
+<g id="node11" class="node">
+<title>CSV files</title>
+<polygon fill="none" stroke="black" points="1538.16,-231.8 1402.55,-231.8 1402.55,-190.2 1538.16,-190.2 1538.16,-231.8"/>
+<text text-anchor="middle" x="1470.35" y="-215.2" font-family="Times,serif" font-size="14.00">data/*.csv</text>
+<text text-anchor="middle" x="1470.35" y="-198.4" font-family="Times,serif" font-size="14.00">&lt;symbol&gt;_prices.csv</text>
+</g>
+<!-- PriceStorage&#45;&gt;CSV files -->
+<g id="edge19" class="edge">
+<title>PriceStorage-&gt;CSV files</title>
+<path fill="none" stroke="black" d="M1123.57,-280.73C1129.89,-279.15 1136.18,-277.62 1142.28,-276.2 1226.78,-256.54 1324.41,-237.56 1390.85,-225.2"/>
+<polygon fill="black" stroke="black" points="1391.38,-228.66 1400.57,-223.39 1390.1,-221.78 1391.38,-228.66"/>
+<text text-anchor="middle" x="1247.63" y="-280.4" font-family="Times,serif" font-size="14.00">append ticks</text>
+</g>
+<!-- Mongo collections -->
+<g id="node12" class="node">
+<title>Mongo collections</title>
+<polygon fill="none" stroke="black" points="1569.72,-171.8 1370.99,-171.8 1370.99,-130.2 1569.72,-130.2 1569.72,-171.8"/>
+<text text-anchor="middle" x="1470.35" y="-155.2" font-family="Times,serif" font-size="14.00">MongoDB</text>
+<text text-anchor="middle" x="1470.35" y="-138.4" font-family="Times,serif" font-size="14.00">users, trades, bot_configs, prices</text>
+</g>
+<!-- PriceStorage&#45;&gt;Mongo collections -->
+<g id="edge20" class="edge">
+<title>PriceStorage-&gt;Mongo collections</title>
+<path fill="none" stroke="black" d="M1061.57,-281.07C1079.05,-259.92 1108.96,-228.03 1142.28,-211.2 1209.63,-177.18 1293.46,-162.21 1359.38,-155.7"/>
+<polygon fill="black" stroke="black" points="1359.5,-159.2 1369.13,-154.79 1358.85,-152.23 1359.5,-159.2"/>
+<text text-anchor="middle" x="1247.63" y="-215.4" font-family="Times,serif" font-size="14.00">prices: save_price_point()</text>
+</g>
+<!-- Blueprint: api&#45;&gt;MongoDB -->
+<g id="edge16" class="edge">
+<title>Blueprint: api-&gt;MongoDB</title>
+<path fill="none" stroke="black" d="M735.69,-391.05C746.9,-389.16 758.59,-387.37 769.58,-386 847.9,-376.27 868,-379.27 946.67,-373 1033.65,-366.07 1055.1,-359.94 1142.28,-356.2 1371.43,-346.38 1640.08,-350.36 1787.05,-353.87"/>
+<polygon fill="black" stroke="black" points="1786.69,-357.36 1796.77,-354.1 1786.86,-350.36 1786.69,-357.36"/>
+<text text-anchor="middle" x="1247.63" y="-360.4" font-family="Times,serif" font-size="14.00">save trades, configs, analytics queries</text>
+</g>
+<!-- Blueprint: api&#45;&gt;BinanceClient -->
+<g id="edge17" class="edge">
+<title>Blueprint: api-&gt;BinanceClient</title>
+<path fill="none" stroke="black" d="M735.8,-397.76C747,-397.06 758.66,-396.43 769.58,-396 1132.95,-381.82 1224.08,-388.22 1587.72,-386 1673.43,-385.48 1697.15,-366.31 1780.57,-386 1789.27,-388.05 1790.4,-391.35 1798.57,-395 1808.21,-399.31 1818.49,-403.66 1828.63,-407.8"/>
+<polygon fill="black" stroke="black" points="1827.12,-410.97 1837.71,-411.47 1829.75,-404.48 1827.12,-410.97"/>
+<text text-anchor="middle" x="1247.63" y="-390.88" font-family="Times,serif" font-size="14.00">market data, orders</text>
+</g>
+<!-- Blueprint: api&#45;&gt;TradingBotManager -->
+<g id="edge14" class="edge">
+<title>Blueprint: api-&gt;TradingBotManager</title>
+<path fill="none" stroke="black" d="M735.93,-400.32C790.52,-399.68 874.74,-401.19 946.67,-413.2 954.05,-414.43 961.66,-416.05 969.22,-417.9"/>
+<polygon fill="black" stroke="black" points="968.19,-421.25 978.75,-420.37 969.95,-414.47 968.19,-421.25"/>
+<text text-anchor="middle" x="858.13" y="-417.4" font-family="Times,serif" font-size="14.00">start/stop/status</text>
+</g>
+<!-- Blueprint: api&#45;&gt;PortfolioManager -->
+<g id="edge15" class="edge">
+<title>Blueprint: api-&gt;PortfolioManager</title>
+<path fill="none" stroke="black" d="M735.61,-420.38C746.83,-423.76 758.54,-427.12 769.58,-430 855.41,-452.38 876.78,-460.14 964.67,-472 1102.1,-490.54 1449.1,-503.11 1587.72,-507 1673.39,-509.4 1694.88,-508.84 1780.57,-507 1787.25,-506.86 1794.15,-506.67 1801.1,-506.44"/>
+<polygon fill="black" stroke="black" points="1801.03,-509.95 1810.9,-506.11 1800.79,-502.95 1801.03,-509.95"/>
+<text text-anchor="middle" x="1247.63" y="-502.54" font-family="Times,serif" font-size="14.00">update positions on trades</text>
+</g>
+<!-- Blueprint: api&#45;&gt;PriceStorage -->
+<g id="edge18" class="edge">
+<title>Blueprint: api-&gt;PriceStorage</title>
+<path fill="none" stroke="black" d="M724.44,-380.81C733.51,-376.4 742.91,-371.67 751.58,-367 759.8,-362.58 760.77,-359.27 769.58,-356.2 844.54,-330.08 869.21,-350.33 946.67,-333 954.88,-331.17 963.38,-328.94 971.78,-326.53"/>
+<polygon fill="black" stroke="black" points="972.7,-329.91 981.29,-323.71 970.71,-323.2 972.7,-329.91"/>
+<text text-anchor="middle" x="858.13" y="-360.4" font-family="Times,serif" font-size="14.00">save_price(symbol, price)</text>
+</g>
+<!-- TradingBot thread&#45;&gt;MongoDB -->
+<g id="edge22" class="edge">
+<title>TradingBot thread-&gt;MongoDB</title>
+<path fill="none" stroke="black" d="M1562.11,-420.72C1570.76,-418.81 1579.4,-416.94 1587.72,-415.2 1673.08,-397.37 1694.87,-395.14 1780.57,-379 1782.73,-378.59 1784.91,-378.18 1787.11,-377.77"/>
+<polygon fill="black" stroke="black" points="1787.55,-381.25 1796.73,-375.95 1786.25,-374.37 1787.55,-381.25"/>
+<text text-anchor="middle" x="1684.14" y="-419.4" font-family="Times,serif" font-size="14.00">save trades (BOT_THRESHOLD)</text>
+</g>
+<!-- TradingBot thread&#45;&gt;BinanceClient -->
+<g id="edge21" class="edge">
+<title>TradingBot thread-&gt;BinanceClient</title>
+<path fill="none" stroke="black" d="M1565.8,-440.22C1645.02,-438.74 1756.32,-436.64 1827.54,-435.3"/>
+<polygon fill="black" stroke="black" points="1827.6,-438.8 1837.54,-435.12 1827.47,-431.81 1827.6,-438.8"/>
+<text text-anchor="middle" x="1684.14" y="-443.84" font-family="Times,serif" font-size="14.00">get_price / place_market_order</text>
+</g>
+<!-- TradingBot thread&#45;&gt;PortfolioManager -->
+<g id="edge23" class="edge">
+<title>TradingBot thread-&gt;PortfolioManager</title>
+<path fill="none" stroke="black" d="M1565.64,-456.74C1573.11,-457.86 1580.54,-458.96 1587.72,-460 1659.26,-470.39 1740.24,-481.36 1801.37,-489.48"/>
+<polygon fill="black" stroke="black" points="1800.68,-492.92 1811.05,-490.77 1801.6,-485.98 1800.68,-492.92"/>
+<text text-anchor="middle" x="1684.14" y="-490.71" font-family="Times,serif" font-size="14.00">add_trade BUY/SELL</text>
+</g>
+<!-- index.html + app.js -->
+<g id="node13" class="node">
+<title>index.html + app.js</title>
+<polygon fill="none" stroke="black" points="271.69,-111.8 46.14,-111.8 46.14,-70.2 271.69,-70.2 271.69,-111.8"/>
+<text text-anchor="middle" x="158.91" y="-95.2" font-family="Times,serif" font-size="14.00">Landing + streaming chart</text>
+<text text-anchor="middle" x="158.91" y="-78.4" font-family="Times,serif" font-size="14.00">fetch /api/price, /status, /price-history</text>
+</g>
+<!-- index.html + app.js&#45;&gt;Blueprint: api -->
+<g id="edge10" class="edge">
+<title>index.html + app.js-&gt;Blueprint: api</title>
+<path fill="none" stroke="black" d="M272.18,-105.85C285.28,-109.78 298.13,-114.74 309.83,-121 315.37,-123.97 314.16,-128.28 319.83,-131 373.35,-156.69 543.51,-118.11 585.38,-160.2 612.45,-187.41 586.48,-297.53 603.38,-332 611.24,-348.05 624.4,-362.4 637.4,-373.86"/>
+<polygon fill="black" stroke="black" points="634.8,-376.24 644.71,-379.99 639.3,-370.88 634.8,-376.24"/>
+<text text-anchor="middle" x="452.6" y="-164.4" font-family="Times,serif" font-size="14.00">GET /api/price, /status, /price-history</text>
+</g>
+<!-- dashboard.html + dashboard.js -->
+<g id="node14" class="node">
+<title>dashboard.html + dashboard.js</title>
+<polygon fill="none" stroke="black" points="301.83,-231.8 16,-231.8 16,-190.2 301.83,-190.2 301.83,-231.8"/>
+<text text-anchor="middle" x="158.91" y="-215.2" font-family="Times,serif" font-size="14.00">Dashboard</text>
+<text text-anchor="middle" x="158.91" y="-198.4" font-family="Times,serif" font-size="14.00">/auth, /api/portfolio, /api/bot-configs, /api/trades</text>
+</g>
+<!-- dashboard.html + dashboard.js&#45;&gt;Blueprint: api -->
+<g id="edge11" class="edge">
+<title>dashboard.html + dashboard.js-&gt;Blueprint: api</title>
+<path fill="none" stroke="black" d="M217.17,-232.17C313.2,-267.68 506.25,-339.06 608.82,-376.98"/>
+<polygon fill="black" stroke="black" points="607.35,-380.17 617.94,-380.36 609.78,-373.61 607.35,-380.17"/>
+<text text-anchor="middle" x="452.6" y="-386.46" font-family="Times,serif" font-size="14.00">GET /api/portfolio, /api/bot-configs, /api/trades</text>
+<text text-anchor="middle" x="452.6" y="-369.66" font-family="Times,serif" font-size="14.00">POST /api/start, /api/stop</text>
+</g>
+<!-- portfolio.html + portfolio.js -->
+<g id="node15" class="node">
+<title>portfolio.html + portfolio.js</title>
+<polygon fill="none" stroke="black" points="276.55,-171.8 41.28,-171.8 41.28,-130.2 276.55,-130.2 276.55,-171.8"/>
+<text text-anchor="middle" x="158.91" y="-155.2" font-family="Times,serif" font-size="14.00">Portfolio</text>
+<text text-anchor="middle" x="158.91" y="-138.4" font-family="Times,serif" font-size="14.00">/api/portfolio, /api/balances, /api/trades</text>
+</g>
+<!-- portfolio.html + portfolio.js&#45;&gt;Blueprint: api -->
+<g id="edge12" class="edge">
+<title>portfolio.html + portfolio.js-&gt;Blueprint: api</title>
+<path fill="none" stroke="black" d="M276.87,-172.16C395.19,-194.6 563.71,-229.85 585.38,-252.2 610.68,-278.3 585.49,-300.35 603.38,-332 612.24,-347.69 625.73,-362.04 638.72,-373.6"/>
+<polygon fill="black" stroke="black" points="636.11,-375.97 645.98,-379.81 640.66,-370.65 636.11,-375.97"/>
+<text text-anchor="middle" x="452.6" y="-256.4" font-family="Times,serif" font-size="14.00">GET /api/portfolio, /api/balances, /api/trades</text>
+</g>
+<!-- auth pages -->
+<g id="node16" class="node">
+<title>auth pages</title>
+<polygon fill="none" stroke="black" points="262.96,-52 54.87,-52 54.87,-16 262.96,-16 262.96,-52"/>
+<text text-anchor="middle" x="158.91" y="-29.8" font-family="Times,serif" font-size="14.00">auth/login.html, auth/register.html</text>
+</g>
+<!-- auth pages&#45;&gt;AuthManager -->
+<g id="edge25" class="edge">
+<title>auth pages-&gt;AuthManager</title>
+<path fill="none" stroke="black" d="M263.17,-21.88C352.18,-15.72 482.25,-17.16 585.38,-61.2 698.47,-109.49 794.71,-225.75 835.82,-280.94"/>
+<polygon fill="black" stroke="black" points="832.75,-282.68 841.5,-288.66 838.39,-278.53 832.75,-282.68"/>
+<text text-anchor="middle" x="452.6" y="-65.4" font-family="Times,serif" font-size="14.00">Flask-Login session</text>
+</g>
+<!-- auth pages&#45;&gt;Blueprint: auth -->
+<g id="edge13" class="edge">
+<title>auth pages-&gt;Blueprint: auth</title>
+<path fill="none" stroke="black" d="M263.32,-39.34C280.03,-43.8 296.27,-50.65 309.83,-61 318.04,-67.27 311.44,-75.96 319.83,-82 416.34,-151.42 488.61,-45.13 585.38,-114.2 637.41,-151.34 660.99,-226.48 670.63,-269.6"/>
+<polygon fill="black" stroke="black" points="667.2,-270.31 672.68,-279.38 674.05,-268.87 667.2,-270.31"/>
+<text text-anchor="middle" x="452.6" y="-118.4" font-family="Times,serif" font-size="14.00">POST /login, /register</text>
+</g>
+</g>
+</svg>
