@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio - RNN Crypto Bot</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Portfolio Dashboard</h1>
+        <nav>
+          <a href="/" class="nav-link">Trading Bot</a>
+          <a href="/portfolio" class="nav-link active">Portfolio</a>
+          <a href="/dashboard" class="nav-link">Dashboard</a>
+          <div class="user-menu" id="userMenu" style="display: none;">
+            <span id="username">User</span>
+            <div class="user-dropdown">
+              <a href="/profile">Profile</a>
+              <a href="/logout">Logout</a>
+            </div>
+          </div>
+          <div class="auth-buttons" id="authButtons">
+            <a href="/login" class="auth-btn">Login</a>
+            <a href="/register" class="auth-btn register">Register</a>
+          </div>
+        </nav>
+      </header>
+
+      <section class="summary-cards">
+        <div class="card">
+          <h3>Total PnL</h3>
+          <div id="totalPnl" class="value">-</div>
+        </div>
+        <div class="card">
+          <h3>Realized PnL</h3>
+          <div id="realizedPnl" class="value">-</div>
+        </div>
+        <div class="card">
+          <h3>Unrealized PnL</h3>
+          <div id="unrealizedPnl" class="value">-</div>
+        </div>
+        <div class="card">
+          <h3>Positions</h3>
+          <div id="positionCount" class="value">-</div>
+        </div>
+      </section>
+
+      <section class="positions">
+        <h2>Current Positions</h2>
+        <div id="positionsTable"></div>
+      </section>
+
+      <section class="balances">
+        <h2>Account Balances</h2>
+        <div id="balancesTable"></div>
+      </section>
+
+      <section class="trades">
+        <h2>Recent Trades</h2>
+        <div id="tradesTable"></div>
+      </section>
+    </div>
+
+    <script src="/static/portfolio.js"></script>
+    <script>
+      (async function checkAuth() {
+        try {
+          const res = await fetch('/api/check-auth');
+          const data = await res.json();
+          if (data.authenticated) {
+            document.getElementById('authButtons').style.display = 'none';
+            document.getElementById('userMenu').style.display = 'flex';
+            document.getElementById('username').textContent = data.user.username;
+          } else {
+            document.getElementById('authButtons').style.display = 'flex';
+            document.getElementById('userMenu').style.display = 'none';
+          }
+        } catch (e) {
+          document.getElementById('authButtons').style.display = 'flex';
+          document.getElementById('userMenu').style.display = 'none';
+        }
+      })();
+    </script>
+  </body>
+</html>

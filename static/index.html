@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RNN Crypto Bot (Testnet)</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>RNN Crypto Bot (Binance Testnet)</h1>
+        <nav>
+          <a href="/" class="nav-link active">Trading Bot</a>
+          <a href="/portfolio" class="nav-link">Portfolio</a>
+          <a href="/dashboard" class="nav-link">Dashboard</a>
+          <div class="user-menu" id="userMenu" style="display: none;">
+            <span id="username">User</span>
+            <div class="user-dropdown">
+              <a href="/profile">Profile</a>
+              <a href="/logout">Logout</a>
+            </div>
+          </div>
+          <div class="auth-buttons" id="authButtons">
+            <a href="/login" class="auth-btn">Login</a>
+            <a href="/register" class="auth-btn register">Register</a>
+          </div>
+        </nav>
+      </header>
+
+      <div id="authRequired" style="display: none;">
+        <div class="auth-required-message">
+          <h2>Authentication Required</h2>
+          <p>Please log in to access the trading bot features.</p>
+          <div class="auth-actions">
+            <a href="/login" class="auth-btn">Login</a>
+            <a href="/register" class="auth-btn register">Register</a>
+          </div>
+        </div>
+      </div>
+
+      <div id="mainContent">
+        <section class="symbol-selector">
+          <div class="field">
+            <label>Select Currency</label>
+            <select id="symbolSelect">
+              <option value="ETHUSDT">ETH/USDT</option>
+              <option value="BTCUSDT">BTC/USDT</option>
+              <option value="BNBUSDT">BNB/USDT</option>
+              <option value="ADAUSDT">ADA/USDT</option>
+              <option value="SOLUSDT">SOL/USDT</option>
+              <option value="DOTUSDT">DOT/USDT</option>
+              <option value="LINKUSDT">LINK/USDT</option>
+              <option value="MATICUSDT">MATIC/USDT</option>
+              <option value="AVAXUSDT">AVAX/USDT</option>
+              <option value="UNIUSDT">UNI/USDT</option>
+              <option value="LTCUSDT">LTC/USDT</option>
+              <option value="XRPUSDT">XRP/USDT</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Chart Period</label>
+            <select id="periodSelect">
+              <option value="1h">1 Hour</option>
+              <option value="1d" selected>1 Day</option>
+              <option value="3d">3 Days</option>
+              <option value="1w">1 Week</option>
+              <option value="1m">1 Month</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Streaming Status</label>
+            <div id="streamingStatus" class="status-indicator">Loading...</div>
+          </div>
+        </section>
+
+        <section class="controls">
+          <div class="field">
+            <label>Symbol</label>
+            <input id="symbol" value="ETHUSDT" readonly />
+          </div>
+          <div class="field">
+            <label>Buy threshold</label>
+            <input id="buy" type="number" step="0.01" placeholder="e.g. 3000" />
+          </div>
+          <div class="field">
+            <label>Sell threshold</label>
+            <input id="sell" type="number" step="0.01" placeholder="e.g. 3200" />
+          </div>
+          <div class="field">
+            <label>Quantity</label>
+            <input id="qty" type="number" step="0.0001" placeholder="0.01" />
+          </div>
+          <div class="field">
+            <label>Dry Run</label>
+            <input id="dryrun" type="checkbox" checked />
+          </div>
+          <div class="buttons">
+            <button id="start">Start Bot</button>
+            <button id="stop">Stop Bot</button>
+          </div>
+        </section>
+
+        <section class="status">
+          <h2>Status</h2>
+          <pre id="status"></pre>
+        </section>
+
+        <section class="ticker">
+          <h2>Live Price & Chart</h2>
+          <div id="price">-</div>
+          <div class="chart-wrap">
+            <canvas id="priceChart" height="400"></canvas>
+          </div>
+          <div class="chart-info">
+            <div class="info-item">
+              <span class="label">Historical Data:</span>
+              <span id="historicalCount">0</span> points
+            </div>
+            <div class="info-item">
+              <span class="label">Real-time Data:</span>
+              <span id="realtimeCount">0</span> points
+            </div>
+            <div class="info-item">
+              <span class="label">Last Update:</span>
+              <span id="lastUpdate">-</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="manual">
+          <h2>Manual Order</h2>
+          <div class="field">
+            <label>Side</label>
+            <select id="side">
+              <option>BUY</option>
+              <option>SELL</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Quantity</label>
+            <input id="manualQty" type="number" step="0.0001" placeholder="0.01" />
+          </div>
+          <button id="order">Place Market Order</button>
+          <pre id="orderResult"></pre>
+        </section>
+      </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+    <script>
+      // Authentication check
+      async function checkAuth() {
+        try {
+          const response = await fetch('/api/check-auth');
+          const data = await response.json();
+          
+          if (data.authenticated) {
+            // User is logged in
+            document.getElementById('authButtons').style.display = 'none';
+            document.getElementById('userMenu').style.display = 'flex';
+            document.getElementById('username').textContent = data.user.username;
+            document.getElementById('authRequired').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+          } else {
+            // User is not logged in
+            document.getElementById('authButtons').style.display = 'flex';
+            document.getElementById('userMenu').style.display = 'none';
+            document.getElementById('authRequired').style.display = 'block';
+            document.getElementById('mainContent').style.display = 'none';
+          }
+        } catch (error) {
+          console.error('Auth check failed:', error);
+          // Show auth required on error
+          document.getElementById('authButtons').style.display = 'flex';
+          document.getElementById('userMenu').style.display = 'none';
+          document.getElementById('authRequired').style.display = 'block';
+          document.getElementById('mainContent').style.display = 'none';
+        }
+      }
+      
+      // Check auth on page load
+      checkAuth();
+    </script>
+  </body>
+</html>

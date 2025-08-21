@@ -1,0 +1,137 @@
+body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; padding: 0; background: #0b1021; color: #e9ecf1; }
+.container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+h1 { margin-bottom: 16px; }
+section { background: #151b34; padding: 16px; border-radius: 8px; margin-bottom: 16px; }
+.field { display: flex; gap: 12px; align-items: center; margin: 8px 0; }
+label { width: 140px; color: #a9b1d6; }
+input, select { flex: 1; padding: 8px 10px; border-radius: 6px; border: 1px solid #39406a; background: #0f1530; color: #e9ecf1; }
+.buttons { display: flex; gap: 12px; margin-top: 8px; }
+button { background: #2f6fed; color: white; border: none; padding: 10px 14px; border-radius: 6px; cursor: pointer; }
+button#stop { background: #e64a4a; }
+pre { background: #0f1530; border: 1px solid #39406a; padding: 12px; border-radius: 6px; overflow: auto; }
+#price { font-size: 28px; font-weight: 700; }
+
+/* Navigation */
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+nav { display: flex; gap: 16px; align-items: center; }
+.nav-link { color: #a9b1d6; text-decoration: none; padding: 8px 16px; border-radius: 6px; transition: all 0.2s; }
+.nav-link:hover { background: #1f2a4a; }
+.nav-link.active { background: #2f6fed; color: white; }
+
+/* Authentication */
+.auth-buttons { display: flex; gap: 12px; align-items: center; }
+.auth-btn { color: #a9b1d6; text-decoration: none; padding: 8px 16px; border-radius: 6px; transition: all 0.2s; border: 1px solid #39406a; }
+.auth-btn:hover { background: #1f2a4a; }
+.auth-btn.register { background: #2f6fed; color: white; border-color: #2f6fed; }
+.auth-btn.register:hover { background: #1e5fd9; }
+
+/* User Menu */
+.user-menu { position: relative; display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.user-menu span { color: #e9ecf1; font-weight: 500; }
+.user-dropdown { position: absolute; top: 100%; right: 0; background: #151b34; border: 1px solid #39406a; border-radius: 8px; padding: 8px 0; min-width: 120px; display: none; z-index: 1000; }
+.user-menu:hover .user-dropdown { display: block; }
+.user-dropdown a { display: block; padding: 8px 16px; color: #a9b1d6; text-decoration: none; transition: background 0.2s; }
+.user-dropdown a:hover { background: #1f2a4a; color: #e9ecf1; }
+
+/* Auth Required Message */
+.auth-required-message { text-align: center; padding: 60px 20px; }
+.auth-required-message h2 { color: #e9ecf1; margin-bottom: 16px; }
+.auth-required-message p { color: #a9b1d6; margin-bottom: 24px; }
+.auth-actions { display: flex; gap: 16px; justify-content: center; }
+
+/* Summary Cards */
+.summary-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.card { background: #1f2a4a; padding: 20px; border-radius: 8px; text-align: center; }
+.card h3 { margin: 0 0 12px 0; color: #a9b1d6; font-size: 14px; }
+.value { font-size: 24px; font-weight: 700; }
+.value.positive { color: #4ade80; }
+.value.negative { color: #f87171; }
+
+/* Tables */
+.data-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+.data-table th, .data-table td { padding: 12px; text-align: left; border-bottom: 1px solid #39406a; }
+.data-table th { background: #1f2a4a; color: #a9b1d6; font-weight: 600; }
+.data-table tr:hover { background: #1f2a4a; }
+.data-table .positive { color: #4ade80; }
+.data-table .negative { color: #f87171; }
+.data-table .buy { color: #4ade80; font-weight: 600; }
+.data-table .sell { color: #f87171; font-weight: 600; }
+
+/* Chart */
+.chart-wrap { height: 400px; margin-top: 16px; }
+.chart-info { display: flex; gap: 24px; margin-top: 12px; padding: 12px; background: #1f2a4a; border-radius: 6px; }
+.info-item { display: flex; gap: 8px; align-items: center; }
+.info-item .label { color: #a9b1d6; font-size: 14px; }
+.status-indicator { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+.status-indicator.loading { background: #fbbf24; color: #000; }
+.status-indicator.active { background: #4ade80; color: #000; }
+.status-indicator.error { background: #f87171; color: #fff; }
+
+/* Dashboard Components */
+.bot-configs { margin-bottom: 24px; }
+.bot-actions { display: flex; gap: 12px; margin-bottom: 16px; }
+.btn-primary { background: #2f6fed; color: white; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; }
+.btn-secondary { background: #39406a; color: #e9ecf1; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; }
+.btn-small { padding: 6px 12px; font-size: 12px; border-radius: 4px; border: none; cursor: pointer; }
+.btn-start { background: #4ade80; color: white; }
+.btn-stop { background: #f87171; color: white; }
+.btn-edit { background: #fbbf24; color: black; }
+.btn-delete { background: #ef4444; color: white; }
+
+.bot-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.bot-card { background: #1f2a4a; padding: 16px; border-radius: 8px; border: 1px solid #39406a; }
+.bot-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.bot-header h3 { margin: 0; color: #e9ecf1; }
+.bot-status { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+.bot-status.active { background: #4ade80; color: black; }
+.bot-status.inactive { background: #6b7280; color: white; }
+.bot-details { margin-bottom: 12px; }
+.bot-param { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.bot-param label { color: #a9b1d6; font-size: 14px; }
+.bot-param span { color: #e9ecf1; font-weight: 500; }
+.bot-actions { display: flex; gap: 8px; }
+
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
+.stat-card { background: #1f2a4a; padding: 16px; border-radius: 8px; text-align: center; }
+.stat-card h3 { margin: 0 0 8px 0; color: #a9b1d6; font-size: 14px; }
+.stat-value { font-size: 20px; font-weight: 700; color: #e9ecf1; }
+
+.activity-list { max-height: 400px; overflow-y: auto; }
+.trade-item { background: #1f2a4a; padding: 12px; border-radius: 6px; margin-bottom: 8px; border-left: 4px solid #39406a; }
+.trade-info { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2fr; gap: 12px; align-items: center; }
+.trade-symbol { font-weight: 600; color: #e9ecf1; }
+.trade-side { font-weight: 600; padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+.trade-side.buy { background: #4ade80; color: black; }
+.trade-side.sell { background: #f87171; color: white; }
+.trade-quantity, .trade-price, .trade-type, .trade-time { color: #a9b1d6; font-size: 14px; }
+
+.chart-container { background: #1f2a4a; padding: 16px; border-radius: 8px; }
+
+.no-data { text-align: center; color: #a9b1d6; font-style: italic; padding: 20px; }
+
+/* Modal */
+.modal { position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); }
+.modal-content { background: #151b34; margin: 5% auto; padding: 0; border-radius: 12px; width: 90%; max-width: 500px; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid #39406a; }
+.modal-header h3 { margin: 0; color: #e9ecf1; }
+.close { color: #a9b1d6; font-size: 28px; font-weight: bold; cursor: pointer; }
+.close:hover { color: #e9ecf1; }
+.modal form { padding: 20px; }
+.modal .form-group { margin-bottom: 16px; }
+.modal .form-group label { display: block; margin-bottom: 8px; color: #a9b1d6; }
+.modal .form-group input, .modal .form-group select { width: 100%; padding: 10px; border: 1px solid #39406a; border-radius: 6px; background: #0f1530; color: #e9ecf1; }
+.form-actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 20px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .summary-cards { grid-template-columns: repeat(2, 1fr); }
+  .data-table { font-size: 14px; }
+  .data-table th, .data-table td { padding: 8px; }
+  .chart-info { flex-direction: column; gap: 8px; }
+  .auth-buttons { flex-direction: column; gap: 8px; }
+  .auth-actions { flex-direction: column; align-items: center; }
+  .bot-list { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .trade-info { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .modal-content { width: 95%; margin: 10% auto; }
+}

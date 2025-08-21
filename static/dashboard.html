@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - RNN Crypto Bot</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Dashboard - RNN Crypto Bot</h1>
+            <nav>
+                <a href="/" class="nav-link">Trading Bot</a>
+                <a href="/portfolio" class="nav-link">Portfolio</a>
+                <a href="/dashboard" class="nav-link active">Dashboard</a>
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <span id="username">User</span>
+                    <div class="user-dropdown">
+                        <a href="/profile">Profile</a>
+                        <a href="/logout">Logout</a>
+                    </div>
+                </div>
+                <div class="auth-buttons" id="authButtons">
+                    <a href="/login" class="auth-btn">Login</a>
+                    <a href="/register" class="auth-btn register">Register</a>
+                </div>
+            </nav>
+        </header>
+
+        <div id="authRequired" style="display: none;">
+            <div class="auth-required-message">
+                <h2>Authentication Required</h2>
+                <p>Please log in to access the dashboard.</p>
+                <div class="auth-actions">
+                    <a href="/login" class="auth-btn">Login</a>
+                    <a href="/register" class="auth-btn register">Register</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="mainContent">
+            <!-- Overview Cards -->
+            <section class="summary-cards">
+                <div class="card">
+                    <h3>Total Portfolio Value</h3>
+                    <div class="value" id="totalValue">$0.00</div>
+                </div>
+                <div class="card">
+                    <h3>Total PnL</h3>
+                    <div class="value" id="totalPnl">$0.00</div>
+                </div>
+                <div class="card">
+                    <h3>Active Bots</h3>
+                    <div class="value" id="activeBots">0</div>
+                </div>
+                <div class="card">
+                    <h3>Total Trades</h3>
+                    <div class="value" id="totalTrades">0</div>
+                </div>
+            </section>
+
+            <!-- Bot Configurations -->
+            <section class="bot-configs">
+                <h2>Bot Configurations</h2>
+                <div class="bot-actions">
+                    <button id="createBot" class="btn-primary">Create New Bot</button>
+                    <button id="refreshBots" class="btn-secondary">Refresh</button>
+                </div>
+                <div id="botConfigsList" class="bot-list">
+                    <!-- Bot configurations will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Trading Statistics -->
+            <section class="trading-stats">
+                <h2>Trading Statistics (Last 30 Days)</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Buy Trades</h3>
+                        <div class="stat-value" id="buyTrades">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Sell Trades</h3>
+                        <div class="stat-value" id="sellTrades">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Manual Trades</h3>
+                        <div class="stat-value" id="manualTrades">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Bot Trades</h3>
+                        <div class="stat-value" id="botTrades">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Volume</h3>
+                        <div class="stat-value" id="totalVolume">$0.00</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Success Rate</h3>
+                        <div class="stat-value" id="successRate">0%</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="recent-activity">
+                <h2>Recent Activity</h2>
+                <div id="recentTrades" class="activity-list">
+                    <!-- Recent trades will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Performance Chart -->
+            <section class="performance-chart">
+                <h2>Portfolio Performance</h2>
+                <div class="chart-container">
+                    <canvas id="performanceChart" height="300"></canvas>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Create Bot Modal -->
+    <div id="createBotModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Bot Configuration</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="createBotForm">
+                <div class="form-group">
+                    <label for="botSymbol">Symbol</label>
+                    <select id="botSymbol" required>
+                        <option value="">Select Symbol</option>
+                        <option value="ETHUSDT">ETH/USDT</option>
+                        <option value="BTCUSDT">BTC/USDT</option>
+                        <option value="BNBUSDT">BNB/USDT</option>
+                        <option value="ADAUSDT">ADA/USDT</option>
+                        <option value="SOLUSDT">SOL/USDT</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="botBuyThreshold">Buy Threshold</label>
+                    <input type="number" id="botBuyThreshold" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="botSellThreshold">Sell Threshold</label>
+                    <input type="number" id="botSellThreshold" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="botQuantity">Quantity</label>
+                    <input type="number" id="botQuantity" step="0.0001" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="botDryRun" checked>
+                        Dry Run (Test Mode)
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Create Bot</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/dashboard.js"></script>
+    <script>
+        // Authentication check
+        async function checkAuth() {
+            try {
+                const response = await fetch('/api/check-auth');
+                const data = await response.json();
+                
+                if (data.authenticated) {
+                    document.getElementById('authButtons').style.display = 'none';
+                    document.getElementById('userMenu').style.display = 'flex';
+                    document.getElementById('username').textContent = data.user.username;
+                    document.getElementById('authRequired').style.display = 'none';
+                    document.getElementById('mainContent').style.display = 'block';
+                } else {
+                    document.getElementById('authButtons').style.display = 'flex';
+                    document.getElementById('userMenu').style.display = 'none';
+                    document.getElementById('authRequired').style.display = 'block';
+                    document.getElementById('mainContent').style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Auth check failed:', error);
+                document.getElementById('authButtons').style.display = 'flex';
+                document.getElementById('userMenu').style.display = 'none';
+                document.getElementById('authRequired').style.display = 'block';
+                document.getElementById('mainContent').style.display = 'none';
+            }
+        }
+        
+        checkAuth();
+    </script>
+</body>
+</html>
